@@ -1,3 +1,5 @@
+=={{ isSubmitting$ | async }}==
+
 <div class="auth-page">
   <div class="container page">
     <div class="row">
@@ -7,13 +9,13 @@
           <a routerLink="/login">Have an account?</a>
         </p>
         BACKEND ERRORS HERE
-
-        <form>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <fieldset class="form-group">
             <input
               type="text"
               class="form-control form-control-lg"
               placeholder="Username"
+              formControlName="username"
             />
           </fieldset>
 
@@ -22,6 +24,7 @@
               type="text"
               class="form-control form-control-lg"
               placeholder="Email"
+              formControlName="email"
             />
           </fieldset>
 
@@ -30,10 +33,11 @@
               type="password"
               class="form-control form-control-lg"
               placeholder="Password"
+              formControlName="password"
             />
           </fieldset>
 
-          <button type="submit" class="btn btn-lg btn-primary pull-xs">
+          <button type="submit" class="btn btn-lg btn-primary pull-xs" [disabled]="isSubmitting$|async">
             Sign Up
           </button>
         </form>
