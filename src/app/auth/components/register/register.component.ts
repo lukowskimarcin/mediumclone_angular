@@ -5,4 +5,9 @@ import {Component} from '@angular/core'
   templateUrl: './register.component.html',
   standalone: true,
 })
-export class RegisterComponent {}
+export class RegisterComponent {
+
+constructor
+
+
+}
