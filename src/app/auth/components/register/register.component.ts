@@ -3,13 +3,11 @@ import {Component} from '@angular/core'
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms'
 import {RouterLink} from '@angular/router'
 import {Store} from '@ngrx/store'
-import {AuthService} from '../../services/auth.service'
-import {authActions} from '../../store/actions'
-import {selectIsSubmitting, selectValidationErrors} from '../../store/reducers'
-import {AuthStateInterface} from '../../types/authState.interface'
-import {RegisterRequestInterface} from '../../types/registerRequest.interface'
 import {combineLatest} from 'rxjs'
 import {BackendErrorMessages} from 'src/app/shared/components/backendErrorMessages/backendErrorMessages.component'
+import {authActions} from '../../store/actions'
+import {selectIsSubmitting, selectValidationErrors} from '../../store/reducers'
+import {RegisterRequestInterface} from '../../types/registerRequest.interface'
 
 @Component({
   selector: 'mc-register',
