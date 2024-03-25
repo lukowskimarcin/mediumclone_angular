@@ -6,20 +6,17 @@ import {AuthService} from '../services/auth.service'
 import {authActions} from './actions'
 
 export const registerEffect = createEffect(
-  (actions$ = inject(Actions), authService = inject(AuthService)) => {
-    return actions$.pipe(
+  (actions$ = inject(Actions), authService = inject(AuthService)) =>
+    actions$.pipe(
       ofType(authActions.register),
-      switchMap(({request}) => {
-        return authService.register(request).pipe(
-          map((currentUser: CurrentUserInterface) => {
-            return authActions.registerSuccess({currentUser})
-          }),
-          catchError(() => {
-            return of(authActions.registerFailure())
-          })
+      switchMap(({request}) =>
+        authService.register(request).pipe(
+          map((currentUser: CurrentUserInterface) =>
+            authActions.registerSuccess({currentUser})
+          ),
+          catchError(() => of(authActions.registerFailure()))
         )
-      })
-    )
-  },
+      )
+    ),
   {functional: true}
 )
