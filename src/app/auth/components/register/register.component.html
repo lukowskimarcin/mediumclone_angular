@@ -1,5 +1,3 @@
-=={{ isSubmitting$ | async }}==
-
 <div class="auth-page">
   <div class="container page">
     <div class="row">
@@ -18,7 +16,6 @@
               formControlName="username"
             />
           </fieldset>
-
           <fieldset class="form-group">
             <input
               type="text"
@@ -27,7 +24,6 @@
               formControlName="email"
             />
           </fieldset>
-
           <fieldset class="form-group">
             <input
               type="password"
@@ -36,8 +32,11 @@
               formControlName="password"
             />
           </fieldset>
-
-          <button type="submit" class="btn btn-lg btn-primary pull-xs" [disabled]="isSubmitting$|async">
+          <button
+            type="submit"
+            class="btn btn-lg btn-primary pull-xs-right"
+            [disabled]="isSubmitting$ | async"
+          >
             Sign Up
           </button>
         </form>
