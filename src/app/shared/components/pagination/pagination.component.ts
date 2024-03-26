@@ -27,6 +27,6 @@ export class PaginationComponent implements OnInit {
     this.pages =
       this.pagesCount > 0 ? this.utilsService.range(1, this.pagesCount) : []
 
-    console.log('pagesCount', this.pagesCount)
+    
   }
 }
