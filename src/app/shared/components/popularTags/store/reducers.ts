@@ -10,7 +10,7 @@ const initialState: PopularTagStateInterface = {
 }
 
 const popularTagsFeature = createFeature({
-  name: 'feed',
+  name: 'popularTags',
   reducer: createReducer(
     initialState,
 
