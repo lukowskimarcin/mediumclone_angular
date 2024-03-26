@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http'
 import {Injectable} from '@angular/core'
-import {Observable, map} from 'rxjs'
+import {map, Observable} from 'rxjs'
 import {environment} from 'src/environments/environment.development'
 import {ArticleInterface} from '../types/article.interface'
 import {ArticleResponseInterface} from '../types/articleResponse.interface'

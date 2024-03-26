@@ -1,7 +1,7 @@
 import {routerNavigationAction} from '@ngrx/router-store'
 import {createFeature, createReducer, on} from '@ngrx/store'
-import { ArticleStateInterface } from '../types/articleState.interface'
-import { articleActions } from './actions'
+import {ArticleStateInterface} from '../types/articleState.interface'
+import {articleActions} from './actions'
 
 const initialState: ArticleStateInterface = {
   isLoading: false,
@@ -19,7 +19,10 @@ const articleFeature = createFeature({
       isLoading: false,
       data: action.article,
     })),
-    on(articleActions.getArticleFailure, (state) => ({...state, isLoading: false})),
+    on(articleActions.getArticleFailure, (state) => ({
+      ...state,
+      isLoading: false,
+    })),
     on(routerNavigationAction, () => initialState)
   ),
 })

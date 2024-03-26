@@ -29,7 +29,9 @@ export const appRoutes: Route[] = [
   {
     path: 'articles/new',
     loadChildren: () =>
-      import('src/app/createArticle/createArticle.routes').then((m) => m.routes),
+      import('src/app/createArticle/createArticle.routes').then(
+        (m) => m.routes
+      ),
   },
   {
     path: 'articles/:slug',

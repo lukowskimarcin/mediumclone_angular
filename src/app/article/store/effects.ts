@@ -1,11 +1,11 @@
 import {inject} from '@angular/core'
+import {Router} from '@angular/router'
 import {Actions, createEffect, ofType} from '@ngrx/effects'
 import {catchError, map, of, switchMap, tap} from 'rxjs'
-import {articleActions} from './actions'
 import {ArticleService as SharedArticleService} from 'src/app/shared/services/article.service'
 import {ArticleInterface} from 'src/app/shared/types/article.interface'
 import {ArticleService} from '../services/article.service'
-import {Router} from '@angular/router'
+import {articleActions} from './actions'
 
 export const getArticleEffect = createEffect(
   (
@@ -35,8 +35,12 @@ export const deleteArticleEffect = createEffect(
       ofType(articleActions.deleteArticle),
       switchMap(({slug}) => {
         return articleService.deleteArticle(slug).pipe(
-          map(() => articleActions.deleteArticleSuccess()),
-          catchError(() => of(articleActions.getArticleFailure()))
+          map(() => {
+            return articleActions.deleteArticleSuccess()
+          }),
+          catchError(() => {
+            return of(articleActions.deleteArticleFailure())
+          })
         )
       })
     )
@@ -48,7 +52,9 @@ export const redirectAfterDeleteEffect = createEffect(
   (actions$ = inject(Actions), router = inject(Router)) => {
     return actions$.pipe(
       ofType(articleActions.deleteArticleSuccess),
-      tap(() => router.navigateByUrl('/'))
+      tap(() => {
+        router.navigateByUrl('/')
+      })
     )
   },
   {functional: true, dispatch: false}
