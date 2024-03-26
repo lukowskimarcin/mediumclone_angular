@@ -1,9 +1,8 @@
 import {createFeature, createReducer, on} from '@ngrx/store'
-import {routerNavigationAction} from '@ngrx/router-store'
+import {PopularTagsStateInterface} from '../types/popularTagsState.interface'
 import {popularTagsActions} from './actions'
-import {PopularTagStateInterface} from '../types/popularTagsState.interface'
 
-const initialState: PopularTagStateInterface = {
+const initialState: PopularTagsStateInterface = {
   isLoading: false,
   error: null,
   data: null,
@@ -13,7 +12,6 @@ const popularTagsFeature = createFeature({
   name: 'popularTags',
   reducer: createReducer(
     initialState,
-
     on(popularTagsActions.getPopularTags, (state) => ({
       ...state,
       isLoading: true,

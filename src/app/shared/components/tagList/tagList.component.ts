@@ -1,6 +1,6 @@
-import {Component, Input} from '@angular/core'
-import {PopularTagType} from '../../types/popularTage.type'
 import {CommonModule} from '@angular/common'
+import {Component, Input} from '@angular/core'
+import {PopularTagType} from '../../types/popularTag.type'
 
 @Component({
   selector: 'mc-tag-list',

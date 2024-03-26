@@ -11,7 +11,6 @@ import {authFeatureKey, authReducer} from './app/auth/store/reducers'
 import * as authEffects from './app/auth/store/effects'
 import * as feedEffects from './app/shared/components/feed/store/effects'
 import * as popularTagsEffects from './app/shared/components/popularTags/store/effects'
-
 import {provideRouterStore, routerReducer} from '@ngrx/router-store'
 import {authInterceptor} from './app/shared/services/authInterceptor'
 import {

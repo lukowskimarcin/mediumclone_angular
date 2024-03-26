@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core'
-import {environment} from 'src/environments/environment'
-import {UtilsService} from '../../services/utils.service'
 import {CommonModule} from '@angular/common'
+import {Component, Input, OnInit} from '@angular/core'
 import {RouterLink} from '@angular/router'
+import {UtilsService} from '../../services/utils.service'
 
 @Component({
   selector: 'mc-pagination',
@@ -12,7 +11,7 @@ import {RouterLink} from '@angular/router'
 })
 export class PaginationComponent implements OnInit {
   @Input() total: number = 0
-  @Input() limit: number = environment.limit
+  @Input() limit: number = 20
   @Input() currentPage: number = 1
   @Input() url: string = ''
 
@@ -23,10 +22,7 @@ export class PaginationComponent implements OnInit {
 
   ngOnInit(): void {
     this.pagesCount = Math.ceil(this.total / this.limit)
-
     this.pages =
       this.pagesCount > 0 ? this.utilsService.range(1, this.pagesCount) : []
-
-    
   }
 }
