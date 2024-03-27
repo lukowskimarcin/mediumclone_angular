@@ -1,26 +1,41 @@
 import {routerNavigationAction} from '@ngrx/router-store'
 import {createFeature, createReducer, on} from '@ngrx/store'
-import {CreateArticleStateInterface} from '../types/editArticleState.interface'
-import {createArticleActions} from './actions'
+import {EditArticleStateInterface} from '../types/editArticleState.interface'
+import {editArticleActions} from './actions'
 
-const initialState: CreateArticleStateInterface = {
-  isSubmiting: false,
+const initialState: EditArticleStateInterface = {
+  article: null,
+  isLoading: false,
+  isSubmitting: false,
   validationErrors: null,
 }
 
-const createArticleFeature = createFeature({
-  name: 'createArticle',
+const editArticleFeature = createFeature({
+  name: 'editArticle',
   reducer: createReducer(
     initialState,
-    on(createArticleActions.createArticle, (state) => ({
+    on(editArticleActions.getArticle, (state) => ({
+      ...state,
+      isLoading: true,
+    })),
+    on(editArticleActions.getArticleSuccess, (state, action) => ({
+      ...state,
+      isLoading: false,
+      article: action.article,
+    })),
+    on(editArticleActions.getArticleFailure, (state) => ({
+      ...state,
+      isLoading: false,
+    })),
+    on(editArticleActions.updateArticle, (state) => ({
       ...state,
       isSubmitting: true,
     })),
-    on(createArticleActions.createArticleSuccess, (state, action) => ({
+    on(editArticleActions.updateArticleSuccess, (state) => ({
       ...state,
       isSubmitting: false,
     })),
-    on(createArticleActions.createArticleFailure, (state, action) => ({
+    on(editArticleActions.updateArticleFailure, (state, action) => ({
       ...state,
       isSubmitting: false,
       validationErrors: action.errors,
@@ -30,8 +45,10 @@ const createArticleFeature = createFeature({
 })
 
 export const {
-  name: createArticleFeatureKey,
-  reducer: createArticleReducer,
-  selectIsSubmiting,
+  name: editArticleFeatureKey,
+  reducer: editArticleReducer,
+  selectIsSubmitting,
   selectValidationErrors,
-} = createArticleFeature
+  selectIsLoading,
+  selectArticle,
+} = editArticleFeature

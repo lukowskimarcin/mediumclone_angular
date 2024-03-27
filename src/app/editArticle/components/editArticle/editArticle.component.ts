@@ -1,21 +1,20 @@
 import {CommonModule} from '@angular/common'
 import {Component, OnInit} from '@angular/core'
-import {Store, select} from '@ngrx/store'
-import {Observable, combineLatest, filter, map} from 'rxjs'
+import {ActivatedRoute} from '@angular/router'
+import {select, Store} from '@ngrx/store'
+import {combineLatest, filter, map, Observable} from 'rxjs'
 import {ArticleFormComponent} from 'src/app/shared/components/articleForm/articleForm.component'
 import {ArticleFormValuesInterface} from 'src/app/shared/components/articleForm/types/articleFormValues.interface'
+import {LoadingComponent} from 'src/app/shared/components/loading/loading.component'
+import {ArticleInterface} from 'src/app/shared/types/article.interface'
 import {ArticleRequestInterface} from 'src/app/shared/types/articleRequest.interface'
 import {editArticleActions} from '../../store/actions'
-
-import {LoadingComponent} from 'src/app/shared/components/loading/loading.component'
-import {ActivatedRoute} from '@angular/router'
-import {ArticleInterface} from 'src/app/shared/types/article.interface'
 import {
-  selectArticle,
-  selectIsLoading,
-  selectIsSubmiting,
+  selectIsSubmitting,
   selectValidationErrors,
-} from '../../store/reducer'
+  selectIsLoading,
+  selectArticle,
+} from '../../store/reducers'
 
 @Component({
   selector: 'mc-edit-article',
@@ -36,10 +35,9 @@ export class EditArticleComponent implements OnInit {
       }
     })
   )
-
   slug = this.route.snapshot.paramMap.get('slug') ?? ''
   data$ = combineLatest({
-    isSubmitting: this.store.select(selectIsSubmiting),
+    isSubmitting: this.store.select(selectIsSubmitting),
     backendErrors: this.store.select(selectValidationErrors),
     isLoading: this.store.select(selectIsLoading),
     initialValues: this.initialValues$,

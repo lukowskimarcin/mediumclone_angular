@@ -6,7 +6,7 @@ import {ArticleFormComponent} from 'src/app/shared/components/articleForm/articl
 import {ArticleFormValuesInterface} from 'src/app/shared/components/articleForm/types/articleFormValues.interface'
 import {ArticleRequestInterface} from 'src/app/shared/types/articleRequest.interface'
 import {createArticleActions} from '../../store/actions'
-import {selectIsSubmiting, selectValidationErrors} from '../../store/reducers'
+import {selectIsSubmitting, selectValidationErrors} from '../../store/reducers'
 
 @Component({
   selector: 'mc-create-article',
@@ -23,7 +23,7 @@ export class CreateArticleComponent {
   }
 
   data$ = combineLatest({
-    isSubmitting: this.store.select(selectIsSubmiting),
+    isSubmitting: this.store.select(selectIsSubmitting),
     backendErrors: this.store.select(selectValidationErrors),
   })
 

@@ -4,12 +4,10 @@
       <div class="row">
         <div class="col-md-6 offset-md-3 col-xs-12">
           <h1 class="text-xs-center">Settings</h1>
-
           <mc-backend-error-messages
             *ngIf="data.backendErrors"
             [backendErrors]="data.backendErrors"
           ></mc-backend-error-messages>
-
           <form [formGroup]="form" (ngSubmit)="submit()">
             <fieldset>
               <fieldset class="form-group">
@@ -20,7 +18,6 @@
                   placeholder="URL of profile picture"
                 />
               </fieldset>
-
               <fieldset class="form-group">
                 <input
                   type="text"
@@ -29,16 +26,13 @@
                   placeholder="Username"
                 />
               </fieldset>
-
               <fieldset class="form-group">
                 <textarea
-                  type="text"
                   class="form-control form-control-lg"
                   formControlName="bio"
-                  placeholder="Short biography about you"
+                  placeholder="Short bio about you"
                 ></textarea>
               </fieldset>
-
               <fieldset class="form-group">
                 <input
                   type="text"
@@ -47,7 +41,6 @@
                   placeholder="Email"
                 />
               </fieldset>
-
               <fieldset class="form-group">
                 <input
                   type="password"
@@ -56,7 +49,6 @@
                   placeholder="New password"
                 />
               </fieldset>
-
               <button
                 type="submit"
                 class="btn btn-lg btn-primary pull-xs-right"
@@ -66,10 +58,10 @@
               </button>
             </fieldset>
           </form>
-          <hr/>
-
-          <button class="btn btn-outline-danger" (click)="logout()">Or click here to logout</button>
-
+          <hr />
+          <button class="btn btn-outline-danger" (click)="logout()">
+            Or click here to logout
+          </button>
         </div>
       </div>
     </div>

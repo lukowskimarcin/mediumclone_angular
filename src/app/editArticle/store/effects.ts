@@ -4,9 +4,9 @@ import {Router} from '@angular/router'
 import {Actions, createEffect, ofType} from '@ngrx/effects'
 import {catchError, map, of, switchMap, tap} from 'rxjs'
 import {ArticleInterface} from 'src/app/shared/types/article.interface'
-import {EditArticleService} from '../services/editArticle.service'
 import {editArticleActions} from './actions'
 import {ArticleService as SharedArticleService} from 'src/app/shared/services/article.service'
+import {EditArticleService} from '../services/editArticle.service'
 
 export const getArticleEffect = createEffect(
   (

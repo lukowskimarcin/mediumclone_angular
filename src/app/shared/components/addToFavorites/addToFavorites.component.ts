@@ -1,7 +1,7 @@
 import {CommonModule} from '@angular/common'
 import {Component, Input} from '@angular/core'
-
 import {Store} from '@ngrx/store'
+import {AddToFavoritesService} from './services/addToFavorites.service'
 import {addToFavoritesActions} from './store/actions'
 
 @Component({
@@ -9,12 +9,11 @@ import {addToFavoritesActions} from './store/actions'
   templateUrl: './addToFavorites.component.html',
   standalone: true,
   imports: [CommonModule],
-  
 })
 export class AddToFavoritesComponent {
   @Input() isFavorited: boolean = false
-  @Input() articleSlug: string = ''
   @Input() favoritesCount: number = 0
+  @Input() articleSlug: string = ''
 
   constructor(private store: Store) {}
 
@@ -25,11 +24,10 @@ export class AddToFavoritesComponent {
         slug: this.articleSlug,
       })
     )
-
     if (this.isFavorited) {
-      this.favoritesCount -= 1
+      this.favoritesCount = this.favoritesCount - 1
     } else {
-      this.favoritesCount += 1
+      this.favoritesCount = this.favoritesCount + 1
     }
 
     this.isFavorited = !this.isFavorited

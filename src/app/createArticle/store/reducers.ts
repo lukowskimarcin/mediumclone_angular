@@ -4,7 +4,7 @@ import {CreateArticleStateInterface} from '../types/createArticleState.interface
 import {createArticleActions} from './actions'
 
 const initialState: CreateArticleStateInterface = {
-  isSubmiting: false,
+  isSubmitting: false,
   validationErrors: null,
 }
 
@@ -32,6 +32,6 @@ const createArticleFeature = createFeature({
 export const {
   name: createArticleFeatureKey,
   reducer: createArticleReducer,
-  selectIsSubmiting,
+  selectIsSubmitting,
   selectValidationErrors,
 } = createArticleFeature
